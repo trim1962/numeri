@@ -1,0 +1,161 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = it_IT
+\documentclass{book}%
+\usepackage{cmap}
+\frenchspacing%
+\input{../Mod_base/base}
+\geometry{top=1.5cm,bottom=1.5cm}
+\input{../Mod_base/grafica}
+\input{../Mod_base/matematica}
+\input{../Mod_base/tabelle}
+\input{../Mod_base/rifIndici}
+\input{../Mod_base/pagina}
+\input{../Mod_base/indice}
+\input{../Mod_base/date}
+\input{../Mod_base/loghi}
+\input{../Mod_base/stand_class}
+\input{../Mod_base/unita_misura}
+\input{../Mod_base/glossario}
+%\newglossary[slg]{symbolslist}{sym}{sbl}{Elenco di simboli}
+\makeglossaries
+\renewcommand*{\glsxtrpostdescgeneral}{%
+	\ifglshasfield{see}{\glscurrententrylabel}
+	{, \glsxtrusesee{\glscurrententrylabel}}%
+	{}%
+}
+\setglossarystyle{altlistgroup}
+\loadglsentries{glossario/glossari1}
+
+\makeindex[options=-s ../Mod_base/oldclaudio.sti]
+\newcolumntype{C}{>{\sffamily $}c<{$}}
+\newcolumntype{F}{>{$\displaystyle }c<{$}}
+\newcolumntype{L}{>{\sffamily $}l<{$}}
+\newcolumntype{M}[1]{>{\centering}p{#1}}
+\newcolumntype{A}{r@{\hspace*{1mm}}r@{\hspace*{1mm}}r}
+\newcolumntype{Q}{r@{\hspace*{1mm}}r}
+\newcolumntype{O}{>{\centering\arraybackslash}p{1.5em}} 
+\newcolumntype{R}{>{\sffamily $}r<{$}}
+\newcolumntype{T}{>{\centering\arraybackslash}p{1em}}
+\newcolumntype{W}{>{\sffamily\Large $}c<{$}}
+\newcommand{\Co}{\numberset{C}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newlength{\gnat}
+\newlength{\gnam}
+\newcommand{\pilH}{\rule{0pt}{2.5ex}}
+\newcommand{\pilD}{\rule[-1ex]{0pt}{0pt}}
+% 10/09/2017 :: 10:18:49 :: \usepackage{draftwatermark}
+% 10/09/2017 :: 10:19:00 :: \SetWatermarkText{BOZZA}
+\input{../Mod_base/altrebasitabelle}
+\makeatletter
+\renewcommand\frontmatter{%
+	\cleardoublepage
+	\@mainmatterfalse
+	%\pagenumbering{roman}
+}
+\renewcommand\mainmatter{%
+	\cleardoublepage
+	\@mainmattertrue
+	%\pagenumbering{arabic}
+}
+\makeatother
+
+\usepackage{tkz-berge}
+\usepackage[toc,page]{appendix}
+
+\renewcommand{\appendixtocname}{Appendici}
+
+\renewcommand{\appendixpagename}{Appendici}
+\usepackage[autostyle,italian=guillemets]{csquotes}
+\usepackage[%
+style=philosophy-modern,
+% 9/01/2018 :: 9:24:04 :: annotation=true,
+hyperref,
+backend=biber,
+backref]{biblatex}
+\addbibresource{numeri.bib}
+\usepackage{hyperxmp}
+\usepackage{hyperref}
+\title{Numeri}
+\author{Claudio Duchi}
+\date{\datetime}
+\hypersetup{%
+pdfencoding=auto,
+urlcolor={blue},
+pdftitle={Tavole},
+pdfsubject={Tavole numeriche},
+pdfstartview={FitH},
+pdfpagemode={UseOutlines},
+pdflicenseurl={http://creativecommons.org/licenses/by-nc-nd/3.0/},
+pdflang={it},
+pdfmetalang={it},
+pdfkeywords={Numeri},
+pdfcopyright={Copyright (C) 2018, Claudio Duchi},
+pdfcontacturl={http://breviariomatematico.altervista.org},
+pdfcontactpostcode={},
+pdfcontactphone={},
+pdfcontactemail={claduc},
+pdfcontactcountry={Italy},
+pdfcontactcity={Perugia},
+pdfcontactaddress={},
+pdfcaptionwriter={Claudio Duchi},
+pdfauthortitle={},%
+pdfauthor={Claudio Duchi},
+linkcolor={blue},
+colorlinks=true,
+citecolor={red},
+breaklinks,
+bookmarksopen,
+verbose,
+baseurl={http://breviariomatematico.altervista.org}
+}
+\input{compilaTexStudio}
+\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\newcommand{\citaoeis}[1]{La successione è la successione \citetitle{#1}~\citeurl{#1} del OEIS}
+\listfiles
+\begin{document}
+		\frontmatter
+		\hypersetup{pageanchor=false}
+		\begin{titlepage}
+			\begin{center}
+			\input{../Mod_base/Lgrande}\\[1cm]
+				\textsc{\LARGE Claudio Duchi}\\[1.5cm]
+				\HRule \\[0.4cm]
+				{ \huge \bfseries Numeri}\\[0.4cm]
+				\HRule \\[1.5cm]
+				\vfill
+			\end{center}
+		\begin{center}
+			\begin{tikzpicture}
+			\renewcommand*{\VertexBallColor}{red!50!black}
+			\GraphInit[vstyle=Art]
+			\grComplete[RA=6]{17}
+			\end{tikzpicture}
+		\end{center}
+		\end{titlepage}
+	\hypersetup{pageanchor=true}
+		\input{../Mod_base/copyright}
+		\tableofcontents
+		\mainmatter
+\input{compilaTexStudioDue}	 
+\cleardoublepage	
+\begin{appendices}
+	\input{../Mod_base/MezziUsati}
+\input{formule}
+	\glsaddall
+	\twocolumn
+	\printglossaries
+	\onecolumn
+\end{appendices}
+\cleardoublepage
+\nocite{*}
+\addcontentsline{toc}{chapter}{\bibname}
+\printbibliography
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\indexname}
+
+\printindex
+
+\end{document}
