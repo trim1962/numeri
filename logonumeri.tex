@@ -1,0 +1,84 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}% polygon, ellipse, star, diamond, etc.
+\usetikzlibrary{shapes.symbols}% starburst, 
+\usetikzlibrary{shadows}
+\usetikzlibrary{shadings}
+% Needs development version of PGF/TikZ
+% Unpack pgf_CVS.ds.zip inside: Users/UserName/Library/texlive/2013/texmf-var
+%https://tex.stackexchange.com/questions/157188/tikz-nodes-positions-and-shapes-with-a-general-number-of-nodes
+\begin{document}
+% Set Grid Dimensions
+\newif\ifcurrent\currenttrue
+\ifcurrent
+  \newcommand{\na}{0}%    first number
+  \newcommand{\nb}{60}%   last number
+  \newcommand{\nn}{1}%  tweak scale
+\fi
+\newcommand{\nsa}{0}%  special number, irregular star shape
+
+\tikzset{%
+  set color/.style = {
+    fill = #1,
+    draw = #1!50!black,
+  },
+  every number/.style = {
+    opacity = 0.9,
+    drop shadow,
+    inner sep = 0.25ex,
+    text = white,
+    font = \fontfamily{pzc}\selectfont,
+    align = center,
+    scale = \nn
+  },
+  every even number/.style = {
+    set color = blue!70!black,
+    shape = circle,
+    inner sep = 1ex
+  },
+  every odd number/.style = {
+    set color = blue!70!black,
+    shape = diamond,
+    inner sep = 1.2ex
+  },
+  every prime number/.style = {
+    set color = red!70!black,
+    shape = diamond,
+    inner sep = 1.2ex,
+  },
+  number 2/.style = {
+    set color = red!70!black,
+    shape = circle,
+    inner sep = 1ex
+  },
+  special number \nsa/.style = {
+    shape = starburst,
+    starburst points = 7,
+    drop shadow,
+    set color = green!50!blue,
+    inner sep = 1ex
+  },
+  every dot/.style ={
+    set color = green!50!blue
+  }
+}%
+
+\begin{tikzpicture}
+  \coordinate (last);
+  \foreach \n [evaluate={% 
+    % \style: \p for prime, \e for even
+    % x ? y : z means "if x then y else z"
+    \p = isprime(\n);
+    \e = mod(\n,2)==0;
+    \style= \p ? "prime" : (\e ? "even" : "odd");
+    % \coordinate: \r for radius, \a for angle
+    \r = sqrt(\n);%/2;
+    \a = sqrt(\n)*360;
+    }] in {\na,...,\nb}{%
+  \coordinate(new) at (\a:\r);
+  \draw[every dot/.try] (last) to[bend right={6/sqrt(\n)}] (new);
+  \node[every number/.try, every \style\space number/.try, number \n/.try,
+    special number \n/.try, minimum size=1cm](last) at (\a:\r) {\n};
+  }%
+\end{tikzpicture}
+\end{document}

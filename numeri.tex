@@ -73,6 +73,7 @@ hyperref,
 backend=biber,
 backref]{biblatex}
 \addbibresource{numeri.bib}
+\usepackage[grumpy,mark,markifdirty,raisemark=0.95\paperheight]{gitinfo2}
 \usepackage{hyperxmp}
 \usepackage{hyperref}
 \title{Numeri}
@@ -125,17 +126,11 @@ baseurl={http://breviariomatematico.altervista.org}
 				\HRule \\[0.4cm]
 				{ \huge \bfseries Numeri}\\[0.4cm]
 				\HRule \\[1.5cm]
-				\vfill
-			\end{center}
-		\begin{center}
-			\begin{tikzpicture}
-			\renewcommand*{\VertexBallColor}{red!50!black}
-			\GraphInit[vstyle=Art]
-			\grComplete[RA=6]{17}
-			\end{tikzpicture}
+	\includestandalone{logonumeri}
 		\end{center}
 		\end{titlepage}
 	\hypersetup{pageanchor=true}
+	L'immagine di copertina è di \cite{PatrickT2014}\par
 		\input{../Mod_base/copyright}
 		\tableofcontents
 		\mainmatter
