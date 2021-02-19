@@ -104,8 +104,13 @@
 
 \usepackage{imakeidx}
 \makeindex[options=-s ../Mod_base/oldclaudio.sti]
-%\newglossary[slg]{symbolslist}{sym}{sbl}{Elenco di simboli}
+%\usepackage[symbols,acronyms,translate=false,nonumberlist,toc,numberedsection,counter=chapter,automake]{glossaries-extra}
+%%\glossariesextrasetup{indexcrossrefs=true}
+%\usepackage{glossary-mcols}
+%\usepackage{glossary-longragged}
+%\usepackage{glossaries-babel}
 %\makeglossaries
+%
 %\renewcommand*{\glsxtrpostdescgeneral}{%
 %	\ifglshasfield{see}{\glscurrententrylabel}
 %	{, \glsxtrusesee{\glscurrententrylabel}}%
@@ -113,24 +118,25 @@
 %}
 %\setglossarystyle{altlistgroup}
 %\loadglsentries{glossario/glossari1}
-\usepackage{qrcode}
+%\loadglsentries{glossario/acronimi1}
+%%\usepackage{qrcode}
 
 \newcolumntype{C}{>{\sffamily $}c<{$}}
-\newcolumntype{F}{>{$\displaystyle }c<{$}}
-\newcolumntype{L}{>{\sffamily $}l<{$}}
-\newcolumntype{M}[1]{>{\centering}p{#1}}
+%\newcolumntype{F}{>{$\displaystyle }c<{$}}
+%\newcolumntype{L}{>{\sffamily $}l<{$}}
+%\newcolumntype{M}[1]{>{\centering}p{#1}}
 \newcolumntype{A}{r@{\hspace*{1mm}}r@{\hspace*{1mm}}r}
 \newcolumntype{Q}{r@{\hspace*{1mm}}r}
-\newcolumntype{O}{>{\centering\arraybackslash}p{1.5em}} 
+%\newcolumntype{O}{>{\centering\arraybackslash}p{1.5em}} 
 \newcolumntype{R}{>{\sffamily $}r<{$}}
-\newcolumntype{T}{>{\centering\arraybackslash}p{1em}}
-\newcolumntype{W}{>{\sffamily\Large $}c<{$}}
+%\newcolumntype{T}{>{\centering\arraybackslash}p{1em}}
+%\newcolumntype{W}{>{\sffamily\Large $}c<{$}}
 %\newcommand{\Co}{\numberset{C}}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-\newlength{\gnat}
-\newlength{\gnam}
-\newcommand{\pilH}{\rule{0pt}{2.5ex}}
-\newcommand{\pilD}{\rule[-1ex]{0pt}{0pt}}
+%\newlength{\gnat}
+%\newlength{\gnam}
+%\newcommand{\pilH}{\rule{0pt}{2.5ex}}
+%\newcommand{\pilD}{\rule[-1ex]{0pt}{0pt}}
 % 10/09/2017 :: 10:18:49 :: \usepackage{draftwatermark}
 % 10/09/2017 :: 10:19:00 :: \SetWatermarkText{BOZZA}
 \usepackage{altrebasitabelle}
@@ -182,7 +188,7 @@ pdflicenseurl={http://creativecommons.org/licenses/by-nc-nd/3.0/},
 pdflang={it},
 pdfmetalang={it},
 pdfkeywords={Numeri},
-pdfcopyright={Copyright (C) 2018, Claudio Duchi},
+pdfcopyright={Copyright (C) 2021, Claudio Duchi},
 pdfcontacturl={http://breviariomatematico.altervista.org},
 pdfcontactpostcode={},
 pdfcontactphone={},
@@ -217,7 +223,7 @@ baseurl={http://breviariomatematico.altervista.org}
 				\HRule \\[0.4cm]
 				{ \huge \bfseries Numeri}\\[0.4cm]
 				\HRule \\[1.5cm]
-	\includestandalone[scale=0.91]{logonumeri}
+	\includestandalone[scale=0.9]{logonumeri}
 		\end{center}
 		\end{titlepage}
 	\hypersetup{pageanchor=true}
