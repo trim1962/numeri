@@ -1,32 +1,120 @@
+% !TeX root = numeri.tex
+% !BIB TS-program = biber
 % !TeX encoding = UTF-8
 % !TeX spellcheck = it_IT
-\documentclass{book}%
-\usepackage{cmap}
-\frenchspacing%
-\input{../Mod_base/base}
-\geometry{top=1.5cm,bottom=1.5cm}
-\input{../Mod_base/grafica}
-\input{../Mod_base/matematica}
-\input{../Mod_base/tabelle}
-\input{../Mod_base/rifIndici}
-\input{../Mod_base/pagina}
-\input{../Mod_base/indice}
-\input{../Mod_base/date}
-\input{../Mod_base/loghi}
-\input{../Mod_base/stand_class}
-\input{../Mod_base/unita_misura}
-\input{../Mod_base/glossario}
-%\newglossary[slg]{symbolslist}{sym}{sbl}{Elenco di simboli}
-\makeglossaries
-\renewcommand*{\glsxtrpostdescgeneral}{%
-	\ifglshasfield{see}{\glscurrententrylabel}
-	{, \glsxtrusesee{\glscurrententrylabel}}%
-	{}%
-}
-\setglossarystyle{altlistgroup}
-\loadglsentries{glossario/glossari1}
 
+\documentclass[a4paper,oneside]{book}%
+\usepackage{cmap}
+\usepackage[big]{layaureo}
+\usepackage{copyright}
+\frenchspacing%
+\usepackage{amsmath}
+
+\usepackage{amssymb}
+\usepackage[italian]{babel}
+\usepackage[thmmarks,hyperref]{ntheorem}
+\usepackage{miamatematica}
+
+\usepackage{lmodern} % load vector font
+\usepackage[T1]{fontenc} % font encoding
+\usepackage[utf8]{inputenc} % input encoding
+%\usepackage{noto}
+\usepackage[babel=true]{microtype}
+%\usepackage{geometry}
+\usepackage{textcomp}
+
+%\geometry{top=1.5cm,bottom=1.5cm}
+\usepackage{grafica}
+
+%Teorema
+\theoremstyle{marginbreak}
+\theoremheaderfont{\normalfont\bfseries}\theorembodyfont{\slshape}
+\theoremsymbol{\ensuremath{\diamondsuit}}
+\theoremseparator{:} %
+\newtheorem{thm}{Teorema}[section]
+%Proprietà
+\theoremstyle{marginbreak}
+\theoremheaderfont{\normalfont\bfseries}\theorembodyfont{\slshape}
+\theoremsymbol{\ensuremath{\diamondsuit}}
+\theoremseparator{:}
+\newtheorem{prop}{Proprietà}[section]
+%lemma
+\theoremstyle{changebreak}
+\theoremsymbol{\ensuremath{\heartsuit}}
+\theoremindent0.5cm
+\theoremnumbering{greek}
+\newtheorem{lem}[thm]{Lemma}
+%corollario
+\theoremindent0cm
+\theoremsymbol{\ensuremath{\spadesuit}}
+\theoremnumbering{arabic}
+\newtheorem{cor}[thm]{Corollario}
+%esempio
+\theoremstyle{change}
+\theorembodyfont{\upshape}
+\theoremsymbol{\ensuremath{\ast}}
+\theoremseparator{}
+\newtheorem{exmp}{Esempio}[section]
+%controesempio
+\theoremstyle{change}
+\theorembodyfont{\upshape}
+\theoremsymbol{\ensuremath{\odot}}
+\theoremseparator{}
+\newtheorem{cexmp}{Contro esempio}[section]
+%definizione
+\theoremstyle{plain}
+\theoremsymbol{\ensuremath{\clubsuit}}
+\theoremseparator{.}
+\theoremstyle{marginbreak}
+\theoremprework{\hrule\bigskip}
+\theorempostwork{\hrule\bigskip}
+\newtheorem{defn}{Definizione}[section]
+%commento
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremsymbol{\ensuremath{\blacklozenge}}
+\theoremseparator{:}
+\newtheorem{commento}{Commento}
+%dimostrazione
+
+\theoremstyle{plain}
+\theoremheaderfont{\sc}
+\theorembodyfont{\bfseries}
+\theoremstyle{nonumberplain}
+%^{}\theoremseparator{.}
+
+\theoremsymbol{\ensuremath{\blacksquare}}
+\theoremheaderfont{\bfseries}
+%\theoremstyle{nonumberplain}
+%\theoremstyle{marginbreak}
+\theorembodyfont{\normalfont}
+\newtheorem{proof}{Dimostrazione}
+%\input{../Mod_base/tabelle}
+
+\usepackage{tabelle}
+
+%\usepackage{adjustbox}
+%\input{../Mod_base/stand_class}
+\usepackage{pagina}
+
+\setlength{\headheight}{13pt}
+\usepackage{indice}
+\usepackage{date}
+\usepackage{unita_misura}
+
+\usepackage{imakeidx}
 \makeindex[options=-s ../Mod_base/oldclaudio.sti]
+%\newglossary[slg]{symbolslist}{sym}{sbl}{Elenco di simboli}
+%\makeglossaries
+%\renewcommand*{\glsxtrpostdescgeneral}{%
+%	\ifglshasfield{see}{\glscurrententrylabel}
+%	{, \glsxtrusesee{\glscurrententrylabel}}%
+%	{}%
+%}
+%\setglossarystyle{altlistgroup}
+%\loadglsentries{glossario/glossari1}
+\usepackage{qrcode}
+
 \newcolumntype{C}{>{\sffamily $}c<{$}}
 \newcolumntype{F}{>{$\displaystyle }c<{$}}
 \newcolumntype{L}{>{\sffamily $}l<{$}}
@@ -37,7 +125,7 @@
 \newcolumntype{R}{>{\sffamily $}r<{$}}
 \newcolumntype{T}{>{\centering\arraybackslash}p{1em}}
 \newcolumntype{W}{>{\sffamily\Large $}c<{$}}
-\newcommand{\Co}{\numberset{C}}
+%\newcommand{\Co}{\numberset{C}}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \newlength{\gnat}
 \newlength{\gnam}
@@ -45,7 +133,8 @@
 \newcommand{\pilD}{\rule[-1ex]{0pt}{0pt}}
 % 10/09/2017 :: 10:18:49 :: \usepackage{draftwatermark}
 % 10/09/2017 :: 10:19:00 :: \SetWatermarkText{BOZZA}
-\input{../Mod_base/altrebasitabelle}
+\usepackage{altrebasitabelle}
+
 \makeatletter
 \renewcommand\frontmatter{%
 	\cleardoublepage
@@ -59,8 +148,9 @@
 }
 \makeatother
 
-\usepackage{tkz-berge}
+%\usepackage{tkz-berge}
 \usepackage[toc,page]{appendix}
+\usepackage{stand_class}
 
 \renewcommand{\appendixtocname}{Appendici}
 
@@ -73,6 +163,8 @@ hyperref,
 backend=biber,
 backref]{biblatex}
 \addbibresource{numeri.bib}
+
+\newcommand{\citaoeis}[1]{La successione è la successione \citetitle{#1}~\citeurl{#1} del OEIS}
 \usepackage[grumpy,mark,markifdirty,raisemark=0.95\paperheight]{gitinfo2}
 \usepackage{hyperxmp}
 \usepackage{hyperref}
@@ -109,40 +201,40 @@ bookmarksopen,
 verbose,
 baseurl={http://breviariomatematico.altervista.org}
 }
+\usepackage[italian]{varioref}
+\usepackage[italian]{cleveref}
 \input{compilaTexStudio}
-\theoremstyle{definition}
-\newtheorem{definizione}{Definizione}
-\theoremstyle{plain}
-\newtheorem{teorema}{Teorema}
-\newcommand{\citaoeis}[1]{La successione è la successione \citetitle{#1}~\citeurl{#1} del OEIS}
+
+\usepackage{CDloghi}
 \listfiles
-\begin{document}
+ \begin{document}
 		\frontmatter
 		\hypersetup{pageanchor=false}
 		\begin{titlepage}
 			\begin{center}
-			\input{../Mod_base/Lgrande}\\[1cm]
+			\Lgrandedue\\[1cm]
 				\textsc{\LARGE Claudio Duchi}\\[1.5cm]
 				\HRule \\[0.4cm]
 				{ \huge \bfseries Numeri}\\[0.4cm]
 				\HRule \\[1.5cm]
-	\includestandalone{logonumeri}
+	\includestandalone[scale=0.91]{logonumeri}
 		\end{center}
 		\end{titlepage}
 	\hypersetup{pageanchor=true}
 	L'immagine di copertina è di \cite{PatrickT2014}\par
-		\input{../Mod_base/copyright}
+	\CDcopyright
 		\tableofcontents
 		\mainmatter
 \input{compilaTexStudioDue}	 
 \cleardoublepage	
 \begin{appendices}
-	\input{../Mod_base/MezziUsati}
+\chapter{Mezzi usati}
+\CDMezziUsati
 \input{formule}
-	\glsaddall
-	\twocolumn
-	\printglossaries
-	\onecolumn
+%	\glsaddall
+%	\twocolumn
+%	\printglossaries
+%	\onecolumn
 \end{appendices}
 \cleardoublepage
 \nocite{*}
