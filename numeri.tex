@@ -1,4 +1,4 @@
-% !TeX root = numeri.tex
+ % !TeX root = numeri.tex
 % !BIB TS-program = biber
 % !TeX encoding = UTF-8
 % !TeX spellcheck = it_IT
@@ -138,7 +138,14 @@
 	%\pagenumbering{arabic}
 }
 \makeatother
-
+\usepackage{listings}
+\lstdefinestyle{pascalstyle}{
+	language=Pascal,
+	commentstyle=\color{red},
+	sensitive=false,
+	%morecomment=[l][\color{red}]{//},
+	morecomment=[l]{//},
+}
 %\usepackage{tkz-berge}
 \usepackage[toc,page]{appendix}
 \usepackage{stand_class}
